@@ -14,7 +14,7 @@
     --milk: #faf6ee;
     --grass: #4a6741;
     --sage: #7a9b6e;
-    --dusk: #1e1409;      
+    --dusk: #1e1409;
     --rust: #a0451b;
   }
 
@@ -687,7 +687,7 @@
   </nav>
 
   <div class="hero-content">
-    <div class="hero-tag">Integrated Farming · Est. nigeria</div>
+    <div class="hero-tag">Integrated Farming</div>
     <h1>KNKS<em>Farms</em></h1>
     <p class="hero-sub">From our fields to your hands — premium cattle, fresh milk, and organic farm manure raised with purpose and care.</p>
     <div class="hero-actions">
@@ -858,8 +858,8 @@
         <div class="contact-row">
           <span class="contact-icon">📞</span>
           <div>
-            <div class="contact-row-label">Phone</div>
-            <div class="contact-row-val">Contact us for details</div>
+            <div class="contact-row-label">Phone / WhatsApp</div>
+            <div class="contact-row-val">+234 806 775 4096</div>
           </div>
         </div>
         <div class="contact-row">
@@ -902,7 +902,9 @@
         <label>Message / Quantity</label>
         <textarea rows="4" placeholder="Tell us what you need — quantity, frequency, location…"></textarea>
       </div>
-      <button class="btn-primary" style="width:100%;text-align:center;padding:18px;" onclick="alert('Thank you! KNKS Farms will be in touch shortly.')">Send Enquiry</button>
+      <button class="btn-primary" style="width:100%;text-align:center;padding:18px;background:#25D366;display:flex;align-items:center;justify-content:center;gap:10px;font-size:15px;" onclick="sendWhatsApp()">
+        <span style="font-size:20px;">💬</span> Send via WhatsApp
+      </button>
     </div>
   </div>
 </section>
@@ -915,6 +917,23 @@
 </footer>
 
 <script>
+  // WhatsApp sender
+  function sendWhatsApp() {
+    const name = document.querySelector('input[type="text"]').value.trim();
+    const phone = document.querySelector('input[type="tel"]').value.trim();
+    const product = document.querySelector('select').value;
+    const message = document.querySelector('textarea').value.trim();
+
+    if (!name || !product) {
+      alert('Please fill in your name and select a product first.');
+      return;
+    }
+
+    const text = `Hello KNKS Integrated Farms! 👋\n\n*Name:* ${name}\n*Phone:* ${phone || 'Not provided'}\n*Interested in:* ${product}\n*Message:* ${message || 'No additional message'}\n\nI found you on your website.`;
+    const url = `https://wa.me/2348083598896?text=${encodeURIComponent(text)}`;
+    window.open(url, '_blank');
+  }
+
   // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver((entries) => {
